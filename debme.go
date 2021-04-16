@@ -2,7 +2,6 @@ package main
 
 import (
 	"embed"
-	"fmt"
 	"io/fs"
 	"path/filepath"
 )
@@ -18,7 +17,7 @@ func Sub(fs embed.FS, basedir string) (Debme, error) {
 	result := Debme{FS: fs, basedir: basedir}
 	_, err := result.ReadDir(".")
 	if err != nil {
-		return Debme{}, fmt.Errorf("cannot create Sub: invalid basedir '%s'", basedir)
+		return Debme{}, err
 	}
 	return result, nil
 }
