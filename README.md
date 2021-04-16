@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-	Yo dawg! I heard you liked `embed.FS`...<br/><br/>
+	Yo dawg! I heard you liked <code>embed.FS</code>...<br/><br/>
    <a href="https://github.com/leaanthony/debme/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
    <a href="https://goreportcard.com/report/github.com/leaanthony/debme"><img src="https://goreportcard.com/badge/github.com/leaanthony/debme"/></a>
    <a href="https://godoc.org/github.com/leaanthony/debme"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"/></a>
