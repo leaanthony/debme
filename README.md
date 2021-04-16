@@ -12,6 +12,14 @@
    <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fleaanthony%2Fdebme?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fleaanthony%2Fdebme.svg?type=shield"/></a>
 </p>
 
+## Features
+
+  * Provides a way to get an `embed.FS` from an embedded subdirectory
+  * One method: `Sub()`
+  * You can keep calling `Sub()`, all the way down...
+  * 100% `embed.FS` compatible
+  * 100% code coverage
+
 ## Example
 
 ```go
