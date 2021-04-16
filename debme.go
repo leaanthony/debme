@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 )
 
+// Debme is an embed.FS compatible wrapper, providing Sub() functionality
 type Debme struct {
 	basedir string
 	embed.FS

@@ -1,8 +1,10 @@
 <p align="center" style="text-align: center">
    <img src="logo.png" width="50%"><br/>
 </p>
+
 <p align="center">
-   Providing Sub() functionality to embed.FS   
+   Providing Sub() functionality to embed.FS
+
    <a href="https://github.com/leaanthony/debme/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
    <a href="https://goreportcard.com/report/github.com/leaanthony/debme"><img src="https://goreportcard.com/badge/github.com/leaanthony/debme"/></a>
    <a href="https://godoc.org/github.com/leaanthony/debme"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"/></a>
@@ -10,7 +12,6 @@
    <a href="https://github.com/leaanthony/debme/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="CodeFactor" /></a>
    <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fleaanthony%2Fdebme?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fleaanthony%2Fdebme.svg?type=shield"/></a>
 </p>
-Debme provides Sub() functionality to embed.FS.
 
 ## Example
 
