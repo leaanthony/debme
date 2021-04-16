@@ -14,29 +14,27 @@ var testfixtures embed.FS
 
 func TestReadFile(t *testing.T) {
 	is2 := is.New(t)
-	d, err := Sub(testfixtures, "fixtures")
+	d, err := FS(testfixtures, "fixtures")
 	is2.NoErr(err)
 	file, err := d.ReadFile("test1/onefile.txt")
 	is2.NoErr(err)
 	is2.Equal(string(file), "test")
-	test2, err := d.Sub("test2")
+	test2, err := d.FS("test2")
 	is2.NoErr(err)
 	file, err = test2.ReadFile("inner/deeper/three.txt")
 	is2.NoErr(err)
 	is2.Equal(string(file), "3")
 
-	_, err = Sub(testfixtures, "badfixture")
+	_, err = FS(testfixtures, "badfixture")
 	is2.True(err != nil)
-	println(err.Error())
 
 	_, err = d.ReadFile("badfile")
 	is2.True(err != nil)
-	println(err.Error())
 }
 
 func TestReadDir(t *testing.T) {
 	is2 := is.New(t)
-	d, err := Sub(testfixtures, "fixtures/test2")
+	d, err := FS(testfixtures, "fixtures/test2")
 	is2.NoErr(err)
 	files, err := d.ReadDir("inner")
 	is2.NoErr(err)
@@ -53,12 +51,11 @@ func TestReadDir(t *testing.T) {
 
 	_, err = d.ReadDir("baddir")
 	is2.True(err != nil)
-	println(err.Error())
 }
 
 func TestOpen(t *testing.T) {
 	is2 := is.New(t)
-	d, err := Sub(testfixtures, "fixtures/test1")
+	d, err := FS(testfixtures, "fixtures/test1")
 	is2.NoErr(err)
 	file, err := d.Open("onefile.txt")
 	is2.NoErr(err)
@@ -68,13 +65,11 @@ func TestOpen(t *testing.T) {
 
 	_, err = d.Open("badfile")
 	is2.True(err != nil)
-	println(err.Error())
-
 }
 
 func TestCompatibility(t *testing.T) {
 	is2 := is.New(t)
-	inner, err := Sub(testfixtures, "fixtures/test2/inner")
+	inner, err := FS(testfixtures, "fixtures/test2/inner")
 	is2.NoErr(err)
 	expectedFiles := slicer.String([]string{
 		".",
@@ -93,9 +88,8 @@ func TestCompatibility(t *testing.T) {
 	is2.NoErr(err)
 }
 
-func TestSub(t *testing.T) {
+func TestFS(t *testing.T) {
 	is2 := is.New(t)
-	_, err := Sub(testfixtures, "baddir")
+	_, err := FS(testfixtures, "baddir")
 	is2.True(err != nil)
-	println(err.Error())
 }

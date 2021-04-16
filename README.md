@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-	Providing Sub() functionality to embed.FS<br/><br/>
+	Yo dawg! I heard you liked `embed.FS`...<br/><br/>
    <a href="https://github.com/leaanthony/debme/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
    <a href="https://goreportcard.com/report/github.com/leaanthony/debme"><img src="https://goreportcard.com/badge/github.com/leaanthony/debme"/></a>
    <a href="https://godoc.org/github.com/leaanthony/debme"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"/></a>
@@ -14,9 +14,9 @@
 
 ## Features
 
-  * Provides a way to get an `embed.FS` from an embedded subdirectory
-  * One method: `Sub()`
-  * You can keep calling `Sub()`, all the way down...
+  * Provides a way to get an `embed.FS` from an embedded directory
+  * One method: `FS()`
+  * You can keep calling `FS()`, all the way down...
   * 100% `embed.FS` compatible
   * 100% code coverage
 
@@ -47,17 +47,17 @@ import (
 var fixtures embed.FS
 
 func main() {
-	root := debme.Sub(fixtures, "fixtures")
+	root, _ := debme.FS(fixtures, "fixtures")
 
 	// Anchor to "fixtures/test1"
-	test1, _ := root.Sub("test1")
+	test1, _ := root.FS("test1")
 	files1, _ := test1.ReadDir(".")
 
 	println(len(files1)) // 1
 	println(files1[0].Name()) // "onefile.txt"
 
 	// Anchor to "fixtures/test2/inner"
-	inner, _ := root.Sub("test2/inner")
+	inner, _ := root.FS("test2/inner")
 	one, _ := inner.ReadFile("one.txt")
 
 	println(string(one)) // "1"
@@ -80,7 +80,7 @@ func main() {
 	*/
 	
 	// Go deeper
-	deeper, _ := inner.Sub("deeper")
+	deeper, _ := inner.FS("deeper")
 	deeperFiles, _ := deeper.ReadDir(".")
 
 	println(len(deeperFiles)) // 1
