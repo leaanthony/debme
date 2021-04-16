@@ -15,10 +15,7 @@ type Debme struct {
 
 // Sub creates an embed.FS compatible struct, anchored to the given basedir.
 func Sub(fs embed.FS, basedir string) (Debme, error) {
-	result := Debme{
-		FS:      fs,
-		basedir: basedir,
-	}
+	result := Debme{FS: fs, basedir: basedir}
 	_, err := result.ReadDir(".")
 	if err != nil {
 		return Debme{}, fmt.Errorf("cannot create Sub: invalid basedir '%s'", basedir)
@@ -43,12 +40,5 @@ func (d Debme) ReadFile(name string) ([]byte, error) {
 
 // Sub returns a new Debme anchored at the given subdirectory.
 func (d Debme) Sub(subDir string) (Debme, error) {
-	_, err := d.ReadDir(subDir)
-	if err != nil {
-		return Debme{}, err
-	}
-	return Debme{
-		basedir: filepath.Join(d.basedir, subDir),
-		FS:      d.FS,
-	}, nil
+	return Sub(d.FS, filepath.Join(d.basedir, subDir))
 }
