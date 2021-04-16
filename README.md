@@ -3,8 +3,7 @@
 </p>
 
 <p align="center">
-   Providing Sub() functionality to embed.FS
-
+	Providing Sub() functionality to embed.FS<br/><br/>
    <a href="https://github.com/leaanthony/debme/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
    <a href="https://goreportcard.com/report/github.com/leaanthony/debme"><img src="https://goreportcard.com/badge/github.com/leaanthony/debme"/></a>
    <a href="https://godoc.org/github.com/leaanthony/debme"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"/></a>
