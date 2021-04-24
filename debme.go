@@ -24,22 +24,31 @@ func FS(fs embed.FS, basedir string) (Debme, error) {
 	return result, nil
 }
 
+func (d Debme) calculatePath(path string) string {
+	base := filepath.Join(d.basedir, path)
+	return filepath.ToSlash(base)
+}
+
 // Open opens the named file for reading and returns it as an fs.File.
 func (d Debme) Open(name string) (fs.File, error) {
-	return d.embedFS.Open(filepath.Join(d.basedir, name))
+	path := d.calculatePath(name)
+	return d.embedFS.Open(path)
 }
 
 // ReadDir reads and returns the entire named directory.
 func (d Debme) ReadDir(name string) ([]fs.DirEntry, error) {
-	return d.embedFS.ReadDir(filepath.Join(d.basedir, name))
+	path := d.calculatePath(name)
+	return d.embedFS.ReadDir(path)
 }
 
 // ReadFile reads and returns the content of the named file.
 func (d Debme) ReadFile(name string) ([]byte, error) {
-	return d.embedFS.ReadFile(filepath.Join(d.basedir, name))
+	path := d.calculatePath(name)
+	return d.embedFS.ReadFile(path)
 }
 
 // FS returns a new Debme anchored at the given subdirectory.
 func (d Debme) FS(subDir string) (Debme, error) {
-	return FS(d.embedFS, filepath.Join(d.basedir, subDir))
+	path := d.calculatePath(subDir)
+	return FS(d.embedFS, path)
 }
