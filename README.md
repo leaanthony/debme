@@ -10,6 +10,7 @@
    <a href="https://www.codefactor.io/repository/github/leaanthony/debme"><img src="https://www.codefactor.io/repository/github/leaanthony/debme/badge" alt="CodeFactor" /></a>
    <a href="https://github.com/leaanthony/debme/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="CodeFactor" /></a>
    <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fleaanthony%2Fdebme?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fleaanthony%2Fdebme.svg?type=shield"/></a>
+   <a href="https://github.com/avelino/awesome-go"><img src="https://awesome.re/mentioned-badge.svg" /></a>
 </p>
 
 ## Features
