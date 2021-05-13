@@ -6,6 +6,7 @@ import (
 	"github.com/matryer/is"
 	"io"
 	"io/fs"
+	"os"
 	"testing"
 )
 
@@ -92,4 +93,26 @@ func TestFS(t *testing.T) {
 	is2 := is.New(t)
 	_, err := FS(testfixtures, "baddir")
 	is2.True(err != nil)
+}
+
+func TestCopy(t *testing.T) {
+	is2 := is.New(t)
+	inner, err := FS(testfixtures, "fixtures/test2/inner")
+	is2.NoErr(err)
+	err = inner.CopyFile("one.txt", "one.txt", 0644)
+	is2.NoErr(err)
+	sourceData, err := inner.ReadFile("one.txt")
+	is2.NoErr(err)
+	targetData, err := os.ReadFile("one.txt")
+	is2.NoErr(err)
+	is2.Equal(sourceData, targetData)
+
+	// Bad source file
+	err = inner.CopyFile("one.txtsd", "one.txt", 0644)
+	is2.True(err != nil)
+
+	// Bad target file
+	err = inner.CopyFile("one.txt", "/:09/one.txt", 0644)
+	is2.True(err != nil)
+
 }

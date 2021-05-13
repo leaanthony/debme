@@ -2,7 +2,9 @@ package debme
 
 import (
 	"embed"
+	"io"
 	"io/fs"
+	"os"
 	"path/filepath"
 )
 
@@ -51,4 +53,17 @@ func (d Debme) ReadFile(name string) ([]byte, error) {
 func (d Debme) FS(subDir string) (Debme, error) {
 	path := d.calculatePath(subDir)
 	return FS(d.embedFS, path)
+}
+
+func (d Debme) CopyFile(sourcePath string, target string, perm os.FileMode) error {
+	sourceFile, err := d.Open(sourcePath)
+	if err != nil {
+		return err
+	}
+	targetFile, err := os.OpenFile(target, os.O_CREATE, perm)
+	if err != nil {
+		return err
+	}
+	_, err = io.Copy(targetFile, sourceFile)
+	return err
 }

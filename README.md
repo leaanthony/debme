@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-	Yo dawg! I heard you liked <code>embed.FS</code>...<br/><br/>
+   <code>embed.FS</code> wrapper providing additional functionality<br/><br/>
    <a href="https://github.com/leaanthony/debme/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
    <a href="https://goreportcard.com/report/github.com/leaanthony/debme"><img src="https://goreportcard.com/badge/github.com/leaanthony/debme"/></a>
    <a href="https://godoc.org/github.com/leaanthony/debme"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"/></a>
@@ -15,9 +15,8 @@
 
 ## Features
 
-  * Provides a way to get an `embed.FS` from an embedded directory
-  * One method: `FS()`
-  * You can keep calling `FS()`, all the way down...
+  * Get an `embed.FS` from an embedded subdirectory
+  * Handy `Copy(sourcePath, targetPath)` method to copy an embedded file to the filesystem
   * 100% `embed.FS` compatible
   * 100% code coverage
 
@@ -86,6 +85,9 @@ func main() {
 
 	println(len(deeperFiles)) // 1
 	println(files1[0].Name()) // "three.txt"
+	
+	// Copy files
+	err := deeper.Copy("three.txt", "/path/to/target.txt")
 }
 ```
 
