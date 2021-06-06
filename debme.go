@@ -60,7 +60,7 @@ func (d Debme) CopyFile(sourcePath string, target string, perm os.FileMode) erro
 	if err != nil {
 		return err
 	}
-	targetFile, err := os.OpenFile(target, os.O_CREATE, perm)
+	targetFile, err := os.OpenFile(target, os.O_CREATE|os.O_RDWR, perm)
 	if err != nil {
 		return err
 	}
